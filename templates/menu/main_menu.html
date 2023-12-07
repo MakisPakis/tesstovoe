@@ -1,0 +1,21 @@
+
+<ul>
+    {% for item in menu_id %}
+        {% if item.position == 1 %}
+            <li><a href="{{ item.slug }}">{{ item.name }}</a>
+                {% if item.get_children %}
+                    <ul>
+                        {% for elem in item.get_children %}
+                            <li>
+                                <a href="{{ elem.slug }}">
+                                    {{ elem.name }}{{elem.position}}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
